@@ -35,7 +35,7 @@ Doing so makes a set of defines such as `A`, `N1`, etc. available for use with t
 
 :::note
 There is an [open issue](https://github.com/zmkfirmware/zmk/issues/21) to provide a more comprehensive, and
-complete set of defines for the full keypad and consumer usage pages in the future for ZMK.
+complete set of defines for the full keyboard and consumer usage pages in the future for ZMK.
 :::
 
 ### Improperly defined keymap - `dtlib.DTError: <board>.dts.pre.tmp:<line number>`
@@ -43,14 +43,14 @@ complete set of defines for the full keypad and consumer usage pages in the futu
 When compiling firmware from a keymap, it may be common to encounter an error in the form of a`dtlib.DTError: <board>.dts.pre.tmp:<line number>`.
 For instructions to resolve such an error, click [here](../troubleshooting###Improperly-defined-keymap)
 
-## Keypad Key Press
+## Keyboard Key Press
 
-The "keypad key press" behavior sends standard keypad keycodes on press/release.
+The "keyboard key press" behavior sends standard keyboard keycodes on press/release.
 
 ### Behavior Binding
 
 - Reference: `&kp`
-- Parameter: The keycode usage ID from the keypad usage page, e.g. `4` or `A`
+- Parameter: The keycode usage ID from the keyboard usage page, e.g. `4` or `A`
 
 Example:
 
