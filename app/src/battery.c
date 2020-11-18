@@ -35,7 +35,7 @@ static int zmk_battery_update(const struct device *battery) {
 
     LOG_DBG("Setting BAS GATT battery level to %d.", state_of_charge.val1);
 
-    return bt_gatt_bas_set_battery_level(state_of_charge.val1);
+    return bt_bas_set_battery_level(state_of_charge.val1);
 }
 
 static void zmk_battery_work(struct k_work *work) {
