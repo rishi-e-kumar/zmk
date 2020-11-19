@@ -1,3 +1,13 @@
+string(REPLACE "/cmake" "" ZMK_BASE ${CMAKE_CURRENT_LIST_DIR})
+
+set(CONFIG_APPLICATION_DEFINED_SYSCALL true)
+# Add our custom Zephyr module for drivers w/ syscalls, etc.
+list(APPEND DTS_ROOT ${ZMK_BASE}/drivers/zephyr)
+
+list(APPEND ZEPHYR_EXTRA_MODULES
+  ${ZMK_BASE}/drivers
+)
+
 # TODO: Check for env or command line "ZMK_CONFIG" setting.
 #  * That directory should load
 #    * defconfigs,
