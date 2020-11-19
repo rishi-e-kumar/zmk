@@ -27,8 +27,8 @@ union work_reference {
 };
 
 struct kscan_gpio_config {
-    u8_t num_of_inputs;
-    u8_t debounce_period;
+    uint8_t num_of_inputs;
+    uint8_t debounce_period;
     struct kscan_gpio_item_config inputs[];
 };
 
@@ -39,7 +39,7 @@ struct kscan_gpio_data {
     kscan_callback_t callback;
     union work_reference work;
     struct device *dev;
-    u32_t pin_state;
+    uint32_t pin_state;
     struct device *inputs[];
 };
 
@@ -57,7 +57,7 @@ static const struct kscan_gpio_item_config *kscan_gpio_input_configs(struct devi
 
 struct kscan_gpio_irq_callback {
     union work_reference *work;
-    u8_t debounce_period;
+    uint8_t debounce_period;
     struct gpio_callback callback;
 };
 
@@ -134,7 +134,7 @@ static int kscan_gpio_direct_configure(struct device *dev, kscan_callback_t call
 static int kscan_gpio_read(struct device *dev) {
     struct kscan_gpio_data *data = dev->driver_data;
     const struct kscan_gpio_config *cfg = dev->config_info;
-    u32_t read_state = data->pin_state;
+    uint32_t read_state = data->pin_state;
     for (int i = 0; i < cfg->num_of_inputs; i++) {
         struct device *in_dev = kscan_gpio_input_devices(dev)[i];
         const struct kscan_gpio_item_config *in_cfg = &kscan_gpio_input_configs(dev)[i];
