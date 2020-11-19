@@ -8,6 +8,8 @@ list(APPEND ZEPHYR_EXTRA_MODULES
   ${ZMK_BASE}/drivers
 )
 
+list(APPEND SYSCALL_INCLUDE_DIRS ${ZMK_BASE}/include/drivers)
+
 # TODO: Check for env or command line "ZMK_CONFIG" setting.
 #  * That directory should load
 #    * defconfigs,
