@@ -151,7 +151,7 @@ if(NOT KEYMAP_FILE)
 endif()
 
 if (NOT KEYMAP_FILE)
-	message(FATAL_ERROR "Failed to locate keymap file!")
+	# message(FATAL_ERROR "Failed to locate keymap file!")
 endif()
 
 list(APPEND ZMK_DTC_FILES ${KEYMAP_FILE})
