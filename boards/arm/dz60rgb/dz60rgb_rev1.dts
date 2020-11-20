@@ -86,3 +86,5 @@ RC(4,0)   RC(4,1)   RC(4,2)                      RC(4,5)                     RC(
 		};
 	};
 };
+
+#include "dz60rgb_rev1.keymap"

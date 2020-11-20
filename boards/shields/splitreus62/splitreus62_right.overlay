@@ -20,3 +20,5 @@
 		, <&pro_micro_d  7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
 		;
 };
+
+#include "splitreus62.keymap"

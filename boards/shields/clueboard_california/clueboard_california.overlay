@@ -32,3 +32,4 @@
 	// TODO: Per-key LED node(s)
 };
 
+#include "clueboard_california.keymap"

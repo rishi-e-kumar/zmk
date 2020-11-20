@@ -29,3 +29,5 @@
 &left_encoder {
     status = "okay";
 };
+
+#include "romac_plus.keymap"

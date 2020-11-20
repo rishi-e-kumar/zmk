@@ -58,3 +58,4 @@ RC(6,5)    RC(6,6)   RC(6,7)                     RC(7,0)                    RC(7
 	};
 };
 
+#include "m60.keymap"

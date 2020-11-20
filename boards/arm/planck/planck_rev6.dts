@@ -63,3 +63,5 @@
 		};
 	};
 };
+
+#include "planck_rev6.keymap"

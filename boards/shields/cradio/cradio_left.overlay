@@ -5,3 +5,5 @@
  */
  
 #include "cradio.dtsi"
+
+#include "cradio.keymap"

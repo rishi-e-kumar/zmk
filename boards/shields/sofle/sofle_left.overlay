@@ -20,3 +20,5 @@
 &left_encoder {
 	status = "okay";
 };
+
+#include "sofle.overlay"
