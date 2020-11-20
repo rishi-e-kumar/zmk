@@ -47,3 +47,5 @@ RC(4,0) RC(4,1) RC(4,2) RC(4,3)                 RC(4,6)                 RC(4,9) 
 		>;
 	};
 };
+
+#include "nibble.keymap"

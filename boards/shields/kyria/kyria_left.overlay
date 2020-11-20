@@ -22,3 +22,5 @@
 &left_encoder {
 	status = "okay";
 };
+
+#include "kyria.keymap"

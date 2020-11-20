@@ -9,3 +9,5 @@
 &default_transform {
 	col-offset = <17>;
 };
+
+#include "cradio.keymap"

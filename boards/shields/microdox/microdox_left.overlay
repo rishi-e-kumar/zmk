@@ -15,3 +15,5 @@
 		, <&pro_micro_d 15 GPIO_ACTIVE_HIGH>
 		;
 };
+
+#include "microdox.keymap"

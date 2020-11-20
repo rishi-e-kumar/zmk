@@ -20,3 +20,5 @@
 		, <&pro_micro_a  3 GPIO_ACTIVE_HIGH>
 		;
 };
+
+#include "corne.keymap"
