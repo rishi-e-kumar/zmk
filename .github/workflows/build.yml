@@ -4,11 +4,25 @@ on:
   push:
     paths:
       - ".github/workflows/build.yml"
-      - "app/**"
+      - "boards/**"
+      - "cmake/**"
+      - "drivers/**"
+      - "dts/**"
+      - "include/**"
+      - "src/**"
+      - "tests/**"
+      - "*"
   pull_request:
     paths:
       - ".github/workflows/build.yml"
-      - "app/**"
+      - "boards/**"
+      - "cmake/**"
+      - "drivers/**"
+      - "dts/**"
+      - "include/**"
+      - "src/**"
+      - "tests/**"
+      - "*"
 
 jobs:
   build:
@@ -45,6 +59,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: zmk
       - name: Cache west modules
         uses: actions/cache@v2
         env:
@@ -55,7 +71,7 @@ jobs:
             tools/
             zephyr/
             bootloader/
-          key: 3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('app/west.yml') }}
+          key: 3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('zmk/west.yml') }}
           restore-keys: |
             3-${{ runner.os }}-build-${{ env.cache-name }}-
             3-${{ runner.os }}-build-
@@ -66,7 +82,7 @@ jobs:
         uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
         id: west-init
         with:
-          args: 'init "-l app"'
+          args: 'init "-l zmk"'
       - name: West update
         uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
         id: west-update
@@ -86,7 +102,7 @@ jobs:
         uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
         id: west-build
         with:
-          args: 'build "-s app -b ${{ matrix.board }} -- -DSHIELD=${{ matrix.shield }}"'
+          args: 'build "-s zmk -b ${{ matrix.board }} -- -DSHIELD=${{ matrix.shield }}"'
       - name: Archive build
         uses: actions/upload-artifact@v2
         if: ${{ matrix.board != 'proton_c' }}
