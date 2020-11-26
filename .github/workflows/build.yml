@@ -4,11 +4,25 @@ on:
   push:
     paths:
       - ".github/workflows/build.yml"
-      - "app/**"
+      - "boards/**"
+      - "cmake/**"
+      - "drivers/**"
+      - "dts/**"
+      - "include/**"
+      - "src/**"
+      - "tests/**"
+      - "*"
   pull_request:
     paths:
       - ".github/workflows/build.yml"
-      - "app/**"
+      - "boards/**"
+      - "cmake/**"
+      - "drivers/**"
+      - "dts/**"
+      - "include/**"
+      - "src/**"
+      - "tests/**"
+      - "*"
 
 jobs:
   build:
@@ -66,6 +80,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: zmk
       - name: Cache west modules
         uses: actions/cache@v2
         env:
@@ -76,7 +92,7 @@ jobs:
             tools/
             zephyr/
             bootloader/
-          key: 4-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('app/west.yml') }}
+          key: 4-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('zmk/west.yml') }}
           restore-keys: |
             4-${{ runner.os }}-build-${{ env.cache-name }}-
             4-${{ runner.os }}-build-
@@ -84,7 +100,7 @@ jobs:
         timeout-minutes: 2
         continue-on-error: true
       - name: West init
-        run: west init -l app
+        run: west init -l zmk
       - name: West update
         run: west update
       - name: West config Zephyr base
@@ -107,7 +123,7 @@ jobs:
           echo ::set-output name=shield-arg::${SHIELD_ARG}
           echo ::set-output name=artifact-name::${ARTIFACT_NAME}
       - name: West build
-        run: west build -s app -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }}
+        run: west build -s zmk -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }}
       - name: Archive build
         uses: actions/upload-artifact@v2
         with:
