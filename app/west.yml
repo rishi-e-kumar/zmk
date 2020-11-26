@@ -2,14 +2,12 @@ manifest:
   remotes:
     - name: zephyrproject-rtos
       url-base: https://github.com/zephyrproject-rtos
-    - name: petejohanson
-      url-base: https://github.com/petejohanson
     - name: microsoft
       url-base: https://github.com/microsoft
   projects:
     - name: zephyr
-      remote: petejohanson
-      revision: zmk-v2.3.0-with-fixes
+      url: https://github.com/innovaker/zephyr
+      revision: v2.4.0+zmk-fixes
       clone-depth: 1
       import:
         # TODO: Rename once upstream offers option like `exclude` or `denylist`
