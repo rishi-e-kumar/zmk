@@ -25,9 +25,10 @@ if [ $num_cases -gt 1 ]; then
 fi
 
 testcase="$path"
+testcaseFullPath="$(cd "$(dirname "$1")"; pwd -P)/$(basename "$1")"
 echo "Running $testcase:"
 
-west build -d build/$testcase -b native_posix -- -DZMK_CONFIG=$testcase > /dev/null 2>&1
+west build -s tests -d build/$testcase -b native_posix -- -DSHIELD=mock -DZMK_CONFIG=$testcaseFullPath > /dev/null 2>&1
 if [ $? -gt 0 ]; then
 	echo "FAIL: $testcase did not build" >> ./build/tests/pass-fail.log
 	exit 1
