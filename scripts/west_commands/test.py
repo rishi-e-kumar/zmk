@@ -28,6 +28,6 @@ class Test(WestCommand):
         return parser           # gets stored as self.parser
 
     def do_run(self, args, unknown_args):
-        # the run-test script assumes the app directory is the current dir.
-        os.chdir(f'{self.topdir}/app')
-        exit(os.system(f'{self.topdir}/app/run-test.sh {args.test_path}'))
+        # the run-test script assumes the zmk directory is the current dir.
+        os.chdir(f'{self.topdir}/zmk')
+        exit(os.system(f'{self.topdir}/zmk/run-test.sh {args.test_path}'))
