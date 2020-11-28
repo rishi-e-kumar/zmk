@@ -19,7 +19,7 @@ LOG_MODULE_REGISTER(zmk, CONFIG_ZMK_LOG_LEVEL);
 
 #define ZMK_KSCAN_DEV DT_LABEL(ZMK_MATRIX_NODE_ID)
 
-void main(void) {
+void zmk(void) {
     LOG_INF("Welcome to ZMK!\n");
 
     if (zmk_kscan_init(ZMK_KSCAN_DEV) != 0) {

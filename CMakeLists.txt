@@ -50,6 +50,6 @@ zephyr_library_sources_ifdef(CONFIG_ZMK_RGB_UNDERGLOW src/rgb_underglow.c)
 zephyr_library_sources(src/endpoints.c)
 zephyr_library_sources(src/hid_listener.c)
 zephyr_library_sources_ifdef(CONFIG_SETTINGS src/settings.c)
-zephyr_library_sources(src/main.c)
+zephyr_library_sources(src/zmk.c)
 
 zephyr_cc_option(-Wfatal-errors)
