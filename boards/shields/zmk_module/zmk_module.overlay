@@ -1,0 +1,29 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/kscan-mock.h>
+
+/ {
+	chosen {
+		zmk,kscan = &kscan;
+	};
+
+	kscan: kscan {
+		compatible = "zmk,kscan-mock";
+		label = "KSCAN_MOCK";
+
+		rows = <2>;
+		columns = <2>;
+		exit-after;
+
+		events = <>;
+	};
+
+	keymap {
+		compatible = "zmk,keymap";
+		label ="Default keymap";
+
+		default_layer {
+			bindings = <&kp T &kp E &kp S &kp T>;
+		};
+	};
+};
