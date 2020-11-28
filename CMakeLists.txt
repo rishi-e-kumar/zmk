@@ -49,7 +49,7 @@ zephyr_library_sources_ifdef(CONFIG_ZMK_RGB_UNDERGLOW app PRIVATE src/rgb_underg
 zephyr_library_sources(app PRIVATE src/endpoints.c)
 zephyr_library_sources(app PRIVATE src/hid_listener.c)
 zephyr_library_sources_ifdef(CONFIG_SETTINGS app PRIVATE src/settings.c)
-zephyr_library_sources(app PRIVATE src/main.c)
+zephyr_library_sources(src/zmk.c)
 
 add_subdirectory(src/display/)
 
