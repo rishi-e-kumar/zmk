@@ -123,7 +123,7 @@ jobs:
           echo ::set-output name=shield-arg::${SHIELD_ARG}
           echo ::set-output name=artifact-name::${ARTIFACT_NAME}
       - name: West build
-        run: west build -s zmk -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }}
+        run: west build -s zmk/tests -b ${{ matrix.board }} -- ${{ steps.variables.outputs.shield-arg }}
       - name: Archive build
         uses: actions/upload-artifact@v2
         with:
