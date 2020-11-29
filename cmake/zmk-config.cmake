@@ -52,6 +52,10 @@ elseif(DEFINED ENV{ZMK_CONFIG})
 
 elseif(user_config_app_cmake_lists)
 	set(ZMK_CONFIG ${user_config_app_cmake_lists})
+
+else()
+	set(ZMK_CONFIG ${CMAKE_CURRENT_SOURCE_DIR})
+
 endif()
 
 # Store the selected user_config in the cache
