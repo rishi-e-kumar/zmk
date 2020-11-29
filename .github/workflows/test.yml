@@ -15,24 +15,27 @@ on:
 jobs:
   integration_test:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/innovaker/zmk-build-arm:2.4
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GHCR_TOKEN }}
     steps:
-      # To use this repository's private action,
-      # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
         with:
           path: zmk
-      - name: Cache west modules
+      - name: Cache modules
         uses: actions/cache@v2
         env:
-          cache-name: cache-zephyr-modules
+          cache-name: modules
         with:
           path: |
             modules/
             tools/
             zephyr/
             bootloader/
-          key: 3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('zmk/west.yml') }}
+          key: 3-${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/west.yml') }}
           restore-keys: |
             3-${{ runner.os }}-build-${{ env.cache-name }}-
             3-${{ runner.os }}-build-
@@ -40,31 +43,12 @@ jobs:
         timeout-minutes: 2
         continue-on-error: true
       - name: West init
-        uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
-        id: west-init
-        with:
-          args: 'init "-l zmk"'
+        run: west init -l zmk
       - name: West update
-        uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
-        id: west-update
-        with:
-          args: "update"
-      - name: West config Zephyr base
-        uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
-        id: west-config
-        with:
-          args: 'config "--global zephyr.base-prefer configfile"'
-      - name: West Zephyr export
-        uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
-        id: west-zephyr-export
-        with:
-          args: "zephyr-export"
+        run: west update
+        timeout-minutes: 3
       - name: Test all
-        uses: "docker://zmkfirmware/zephyr-west-action-arm:latest"
-        id: west-build
-        with:
-          entrypoint: /bin/bash
-          args: '-c "west test"'
+        run: west test
       - name: Archive build
         if: ${{ always() }}
         uses: actions/upload-artifact@v2
