@@ -4,7 +4,17 @@
   "runArgs": ["--security-opt", "label=disable"],
   "containerEnv": { "WORKSPACE_DIR": "${containerWorkspaceFolder}" },
   "mounts": ["type=volume,source=zmk-config,target=/workspaces/zmk-config"],
-  "extensions": ["ms-vscode.cpptools"],
+  "extensions": [
+    "ms-vscode.cpptools",
+    "plorefice.devicetree",
+    "spadin.zmk-tools",
+    "twxs.cmake",
+    "ms-python.python",
+    "yzhang.markdown-all-in-one",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "eamodio.gitlens"
+  ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
