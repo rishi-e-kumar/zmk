@@ -1,8 +1,8 @@
 
-if SHIELD_REKDACTYL_LEFT
+if SHIELD_REKDACTYL2_LEFT
 
 config ZMK_KEYBOARD_NAME
-	default "REKDactyl"
+	default "REKDactyl2"
 
 endif
 
@@ -10,7 +10,7 @@ endif
 if SHIELD_REKDACTYL2_RIGHT
 
 config ZMK_KEYBOARD_NAME
-	default "REKDactyl Right"
+	default "REKDactyl2 Right"
 
 endif
 
